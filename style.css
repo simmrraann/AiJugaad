@@ -642,6 +642,63 @@ h1, h2, h3, h4 {
   word-break: break-all;
 }
 
+.portfolio-banner {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.banner-cursive-label {
+  font-family: var(--font-cursive);
+  font-size: 1.65rem;
+  color: var(--matcha);
+  font-weight: 600;
+  transform: rotate(-1.5deg);
+  margin-bottom: 2px;
+}
+
+.banner-arrow {
+  width: 32px;
+  height: 40px;
+  margin-bottom: 15px;
+  animation: bounce-small 3s ease-in-out infinite;
+}
+
+.banner-cta {
+  display: inline-block;
+  background-color: var(--matcha);
+  color: var(--text-main);
+  border: 3px solid var(--black);
+  padding: 12px 28px;
+  font-family: var(--font-headings);
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 4px 4px 0px var(--black);
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.banner-cta:hover {
+  background-color: var(--matcha-light);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--black);
+}
+
+.banner-cta:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px var(--black);
+}
+
+@keyframes bounce-small {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
 /* Footer styling */
 .footer {
   padding: 40px 0;
