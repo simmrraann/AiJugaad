@@ -37,10 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeButtons = document.querySelectorAll('.modal-close-btn');
   const closeRedirects = document.querySelectorAll('.modal-close-redirect');
 
-  // Open Modal on Card Click
+  // Open Modal on Card Click (skip for cards with data-work-id="1" and "2" as they're direct links)
   flashcards.forEach(card => {
     card.addEventListener('click', () => {
       const workId = card.getAttribute('data-work-id');
+      // Skip modal opening for first and second cards (they're direct links)
+      if (workId === '1' || workId === '2') return;
       const targetModal = document.getElementById(`modal-${workId}`);
       if (targetModal) {
         targetModal.classList.add('active');

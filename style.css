@@ -1047,6 +1047,51 @@ h1, h2, h3, h4 {
   box-shadow: 0px 0px 0px var(--black);
 }
 /* Atelier Aura Card Premium Effects */
+/* Anchor wrapper for flashcard redirects */
+.work-flashcard-link {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+/* Play button overlay for video card */
+.play-button-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(134, 167, 137, 0.65);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.work-flashcard-link[data-work-id="2"]:hover .play-button-overlay {
+  opacity: 1;
+}
+
+.play-button-overlay .play-icon {
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  animation: play-pulse 1.5s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+}
+
+@keyframes play-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
 .work-flashcard[data-work-id="1"] {
   position: relative;
   overflow: hidden;
