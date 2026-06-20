@@ -215,4 +215,50 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ==========================================
+  // 5. Capability Card Click -> Smooth Scroll
+  // ==========================================
+  const serviceCards = document.querySelectorAll('.service-card[data-target]');
+  const header = document.querySelector('.navbar');
+  serviceCards.forEach(card => {
+    const targetSelector = card.getAttribute('data-target');
+    function activateTarget() {
+      const target = document.querySelector(targetSelector);
+      if (!target) return;
+      const headerOffset = header ? header.offsetHeight + 12 : 12;
+      const targetPosition = window.scrollY + target.getBoundingClientRect().top - headerOffset;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }
+
+    card.addEventListener('click', () => {
+      activateTarget();
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activateTarget();
+      }
+    });
+  });
+
+  // ==========================================
+  // 6. Fade-up reveal using IntersectionObserver
+  // ==========================================
+  const revealTargets = document.querySelectorAll('.fade-up');
+  if ('IntersectionObserver' in window && revealTargets.length) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealTargets.forEach(el => obs.observe(el));
+  } else {
+    // Fallback: reveal all
+    revealTargets.forEach(el => el.classList.add('in-view'));
+  }
 });
